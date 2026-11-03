@@ -90,6 +90,33 @@ h2 small { font-family: var(--body); font-weight: 500; font-size: 13px; color: v
 .photos figcaption { font-size: 13.5px; color: var(--muted); }
 .photos figcaption b { color: var(--ink); font-weight: 600; }
 
+.inv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 640px) { .inv-grid { grid-template-columns: 1fr; } }
+.inv-card { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 6px; min-width: 0; }
+.inv-card h3 { font-family: var(--display); font-size: 15px; margin: 0; }
+.inv-card ul { margin: 0; padding-inline-start: 18px; font-size: 14.5px; }
+.inv-card.alert { border-color: var(--issue); background: var(--issue-bg); }
+.inv-card.alert h3 { color: var(--issue); }
+.inv-card .num { font-variant-numeric: tabular-nums; font-weight: 600; }
+details { border-top: 1px solid var(--line); padding-top: 10px; }
+summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.tbl { overflow-x: auto; margin-top: 10px; }
+.tbl table { border-collapse: collapse; font-size: 13.5px; min-width: 760px; width: 100%; font-variant-numeric: tabular-nums; }
+.tbl th, .tbl td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: center; white-space: nowrap; }
+.tbl tbody th { text-align: start; font-weight: 500; }
+.tbl thead th { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.tbl thead tr:first-child th { color: var(--ink); font-size: 13.5px; }
+.tbl .day { border-inline-start: 2px solid var(--line); }
+.tbl td.u { color: var(--muted); }
+.tbl td.nil { color: var(--muted); opacity: .6; }
+.tbl td.w { color: var(--issue); font-weight: 600; }
+.tbl td.cl { font-weight: 600; }
+.tbl td.zero { color: var(--issue); background: var(--issue-bg); }
+.tbl tr > :nth-child(4), .tbl tr > :nth-child(8) { border-inline-start: 2px solid var(--line); }
+.photos.wide img { aspect-ratio: 4 / 3; }
+.src { font-size: 13px; color: var(--muted); margin: 0; }
+
 footer { color: var(--muted); font-size: 13px; text-align: center; }
 </style>
 
@@ -101,16 +128,110 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   </header>
 
   <div class="strip" aria-label="ملخص الحالة">
-    <div class="stat done"><b>9</b><span>منجز</span></div>
+    <div class="stat done"><b>10</b><span>منجز</span></div>
     <div class="stat prog"><b>2</b><span>قيد المعالجة</span></div>
     <div class="stat plan"><b>3</b><span>مجدول</span></div>
-    <div class="stat issue"><b>1</b><span>ملف يحتاج معالجة</span></div>
+    <div class="stat issue"><b>3</b><span>تحتاج معالجة</span></div>
   </div>
 
   <div class="summary">
     <h2>ملخص الفترة</h2>
-    <p>تركّز العمل خلال الفترة على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وعُقد اجتماع مع شركة كلوب لخدمة الطلبات المحلية لفرع Ogg والتنفيذ جارٍ، وتم التواصل مع عدة موردين للعبة السكويشي والبالونات. وأكدت شركة مكافحة الحشرات رش الفرع يوم الخميس 5 نوفمبر، إلى جانب تركيب مصائد القوارض حول الفرع. وتمت صيانة إنارة لوحة الفرع ومكينة الآيس كريم.</p>
+    <p>تركّز العمل خلال الفترة على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وعُقد اجتماع مع شركة كلوب لخدمة الطلبات المحلية لفرع Ogg والتنفيذ جارٍ، وتم التواصل مع عدة موردين للعبة السكويشي والبالونات. وأكدت شركة مكافحة الحشرات رش الفرع يوم الخميس 5 نوفمبر، إلى جانب تركيب مصائد القوارض حول الفرع. وتمت صيانة إنارة لوحة الفرع ومكينة الآيس كريم. وأظهر الجرد اليومي هدراً ملحوظاً في اللحم، ونفاد أربعة أصناف من الصوصات وقاعدة الآيس كريم.</p>
   </div>
+
+  <section>
+    <h2>الجرد اليومي <small>1 و 2 نوفمبر · المواد الخام والمنتجات المصنّعة</small></h2>
+    <ul class="tasks">
+      <li><span class="t">استلام ومراجعة الجرد اليومي ليومي 1 و 2 نوفمبر</span><span class="pill done">منجز</span>
+        <span class="d">نموذج OGG للجرد اليومي، فرع OGG، أعدّه: Charo.</span></li>
+    </ul>
+    <div class="inv-grid">
+      <div class="inv-card alert">
+        <h3>الهدر</h3>
+        <ul>
+          <li>اللحم: <span class="num">4.4</span> كجم (1 نوف) و <span class="num">3.2</span> كجم (2 نوف). الهدر في 1 نوفمبر يقارب المستهلك نفسه (4.6 كجم).</li>
+          <li>الدجاج: <span class="num">3</span> كجم ثم <span class="num">2</span> كجم.</li>
+          <li>الخبز: <span class="num">13</span> حبة ثم <span class="num">12</span> حبة.</li>
+          <li>قاعدة آيس كريم الليمون: <span class="num">5</span> كجم في 1 نوفمبر، وهي كامل الكمية.</li>
+          <li>البطاطس: <span class="num">0.7</span> كجم في 2 نوفمبر.</li>
+        </ul>
+      </div>
+      <div class="inv-card alert">
+        <h3>نفد من المخزون (رصيد 0)</h3>
+        <ul>
+          <li>قاعدة آيس كريم الليمون</li>
+          <li>صوص OGG (خلص في 2 نوفمبر)</li>
+          <li>صوص الليمون الحساوي</li>
+          <li>صوص جبن الشيدر</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <h3>المشتريات</h3>
+        <ul>
+          <li>1 نوف: خبز <span class="num">150</span> حبة، صوص ستيك هاوس <span class="num">15</span> كجم، توابل كاجون <span class="num">6</span> كجم، باربكيو حار <span class="num">2</span> كجم.</li>
+          <li>2 نوف: خبز <span class="num">150</span> حبة، صوص باربكيو مدخن <span class="num">1.5</span> كجم.</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <h3>أعلى استهلاك</h3>
+        <ul>
+          <li>الخبز: <span class="num">161</span> ثم <span class="num">138</span> حبة.</li>
+          <li>زيت الطبخ: <span class="num">51</span> لتر في 2 نوفمبر.</li>
+          <li>المشروبات الغازية: <span class="num">23</span> ثم <span class="num">12</span> حبة.</li>
+          <li>الدجاج: <span class="num">11.5</span> ثم <span class="num">5</span> كجم.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="issue-box">
+      <div class="t">أرقام تحتاج مراجعة في النموذج</div>
+      <p>الماء (1 نوف): الافتتاحي 292 والمستهلك 3، فالمفروض الختامي 289، والمكتوب 288.<br>البطاطس (2 نوف): الهدر 0.7 كجم ما انخصم من الرصيد؛ 262 − 9 = 253 والمفروض 252.3.</p>
+    </div>
+    <details>
+      <summary>الجدول الكامل للجرد</summary>
+      <div class="tbl">
+        <table>
+          <thead>
+            <tr><th rowspan="2" scope="col">الصنف</th><th rowspan="2" scope="col">الوحدة</th><th rowspan="2" scope="col">رصيد أول المدة</th><th colspan="4" scope="colgroup">1 نوفمبر</th><th colspan="4" scope="colgroup">2 نوفمبر</th></tr>
+            <tr><th>مشتريات</th><th>مستهلك</th><th>هدر</th><th>ختامي</th><th>مشتريات</th><th>مستهلك</th><th>هدر</th><th>ختامي</th></tr>
+          </thead>
+          <tbody>
+<tr><th scope="row">الدجاج</th><td class="u">كجم</td><td>96.5</td><td class="nil">–</td><td class="">11.5</td><td class="w">3</td><td class="cl">82</td><td class="nil">–</td><td class="">5</td><td class="w">2</td><td class="cl">75</td></tr>
+<tr><th scope="row">اللحم</th><td class="u">كجم</td><td>119</td><td class="nil">–</td><td class="">4.6</td><td class="w">4.4</td><td class="cl">110</td><td class="nil">–</td><td class="">8.8</td><td class="w">3.2</td><td class="cl">98</td></tr>
+<tr><th scope="row">زيت الطبخ</th><td class="u">لتر</td><td>187</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">187</td><td class="nil">–</td><td class="">51</td><td class="nil">–</td><td class="cl">136</td></tr>
+<tr><th scope="row">البطاطس</th><td class="u">كجم</td><td>274</td><td class="nil">–</td><td class="">12</td><td class="nil">–</td><td class="cl">262</td><td class="nil">–</td><td class="">9</td><td class="w">0.7</td><td class="cl">253</td></tr>
+<tr><th scope="row">الخبز</th><td class="u">حبة</td><td>156</td><td class="">150</td><td class="">161</td><td class="w">13</td><td class="cl">132</td><td class="">150</td><td class="">138</td><td class="w">12</td><td class="cl">132</td></tr>
+<tr><th scope="row">المايونيز</th><td class="u">كجم</td><td>81.4</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">81.4</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">81.4</td></tr>
+<tr><th scope="row">جبنة شيدر بيضاء</th><td class="u">كجم</td><td>55</td><td class="nil">–</td><td class="">5</td><td class="nil">–</td><td class="cl">50</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">50</td></tr>
+<tr><th scope="row">جبنة شيدر صفراء</th><td class="u">كجم</td><td>70</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">70</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">70</td></tr>
+<tr><th scope="row">جبنة موزاريلا</th><td class="u">كجم</td><td>75.9</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">75.9</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">75.9</td></tr>
+<tr><th scope="row">كريمة الطبخ</th><td class="u">كجم</td><td>17</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">17</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">17</td></tr>
+<tr><th scope="row">قاعدة آيس كريم الليمون</th><td class="u">كجم</td><td>5</td><td class="nil">–</td><td class="nil">–</td><td class="w">5</td><td class="cl zero">0</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl zero">0</td></tr>
+<tr><th scope="row">هريس الفراولة</th><td class="u">كجم</td><td>19</td><td class="nil">–</td><td class="">2</td><td class="nil">–</td><td class="cl">17</td><td class="nil">–</td><td class="">1</td><td class="nil">–</td><td class="cl">16</td></tr>
+<tr><th scope="row">باربكيو حار</th><td class="u">كجم</td><td>2</td><td class="">2</td><td class="nil">–</td><td class="nil">–</td><td class="cl">4</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">4</td></tr>
+<tr><th scope="row">توابل كاجون</th><td class="u">كجم</td><td>2</td><td class="">6</td><td class="nil">–</td><td class="nil">–</td><td class="cl">8</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">8</td></tr>
+<tr><th scope="row">مشروبات غازية 330 مل</th><td class="u">حبة</td><td>495</td><td class="nil">–</td><td class="">23</td><td class="nil">–</td><td class="cl">472</td><td class="nil">–</td><td class="">12</td><td class="nil">–</td><td class="cl">460</td></tr>
+<tr><th scope="row">ماء 330 مل</th><td class="u">حبة</td><td>292</td><td class="nil">–</td><td class="">3</td><td class="nil">–</td><td class="cl">288</td><td class="nil">–</td><td class="">11</td><td class="nil">–</td><td class="cl">277</td></tr>
+<tr><th scope="row">قاعدة آيس كريم PreGel</th><td class="u">كجم</td><td>7</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">7</td><td class="nil">–</td><td class="">1</td><td class="nil">–</td><td class="cl">6</td></tr>
+<tr><th scope="row">صوص ستيك هاوس</th><td class="u">كجم</td><td>1.3</td><td class="">15</td><td class="">2</td><td class="nil">–</td><td class="cl">14.3</td><td class="nil">–</td><td class="">4.3</td><td class="nil">–</td><td class="cl">10</td></tr>
+<tr><th scope="row">صوص الكزبرة الحار</th><td class="u">كجم</td><td>9.5</td><td class="nil">–</td><td class="">1.5</td><td class="nil">–</td><td class="cl">8</td><td class="nil">–</td><td class="">1</td><td class="nil">–</td><td class="cl">7</td></tr>
+<tr><th scope="row">صوص الليمون الحساوي</th><td class="u">كجم</td><td>0</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl zero">0</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl zero">0</td></tr>
+<tr><th scope="row">صوص الباربكيو المدخن</th><td class="u">كجم</td><td>0.5</td><td class="nil">–</td><td class="">0.5</td><td class="nil">–</td><td class="cl zero">0</td><td class="">1.5</td><td class="nil">–</td><td class="nil">–</td><td class="cl">1.5</td></tr>
+<tr><th scope="row">صوص OGG</th><td class="u">كجم</td><td>0.5</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">0.5</td><td class="nil">–</td><td class="">0.5</td><td class="nil">–</td><td class="cl zero">0</td></tr>
+<tr><th scope="row">صوص جبن الشيدر</th><td class="u">كجم</td><td>0</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl zero">0</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl zero">0</td></tr>
+<tr><th scope="row">صوص الرانش</th><td class="u">كجم</td><td>2.5</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">2.5</td><td class="nil">–</td><td class="nil">–</td><td class="nil">–</td><td class="cl">2.5</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src">منقول من نماذج الجرد المكتوبة بخط اليد. ملاحظات النموذج في 2 نوفمبر: "2 waste" للدجاج، "3.2 waste" و "Staff 5" للحم، "wasted 700g" للبطاطس.</p>
+    </details>
+    <details>
+      <summary>صور نماذج الجرد</summary>
+      <div class="photos wide" style="margin-top:10px">
+        <figure><img src="images/2026-11-03/inventory-2026-11-01.jpg" alt="نموذج الجرد اليومي لفرع OGG بتاريخ 1 نوفمبر 2026"><figcaption><b>جرد 1 نوفمبر</b></figcaption></figure>
+        <figure><img src="images/2026-11-03/inventory-2026-11-02.jpg" alt="نموذج الجرد اليومي لفرع OGG بتاريخ 2 نوفمبر 2026"><figcaption><b>جرد 2 نوفمبر</b></figcaption></figure>
+      </div>
+    </details>
+  </section>
 
   <section>
     <h2>الوثائق والتراخيص الحكومية</h2>
@@ -201,6 +322,9 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <section>
     <h2>متابعات قادمة <small>نقلناها من اليوم</small></h2>
     <ul class="check">
+      <li><div>إعادة طلب الأصناف النافدة: قاعدة آيس كريم الليمون، صوص OGG، الصوص الحساوي، صوص الشيدر</div></li>
+      <li><div>مراجعة سبب الهدر المرتفع في اللحم مع فريق المطبخ</div></li>
+      <li><div>تصحيح أرقام الماء والبطاطس في نماذج الجرد <span class="who">· Charo</span></div></li>
       <li><div>زيارة الإدارة يوم الثلاثاء ومعالجة مشاكل الشهادات الصحية <span class="who">· مع نوف</span></div></li>
       <li><div>تحديد موعد الجولة على الفروع، وتجهيز قائمة المستندات المطلوب مراجعتها <span class="who">· مع نوف</span></div></li>
       <li><div>متابعة صدور تجديد "واثق"</div></li>
