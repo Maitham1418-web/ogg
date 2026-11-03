@@ -84,6 +84,12 @@ h2 small { font-family: var(--body); font-weight: 500; font-size: 13px; color: v
 .check li::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: 6px; border: 2px solid var(--accent); border-radius: 4px; }
 .who { color: var(--muted); font-size: 13.5px; }
 
+.photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.photos figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
+.photos img { width: 100%; aspect-ratio: 9 / 14; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); display: block; }
+.photos figcaption { font-size: 13.5px; color: var(--muted); }
+.photos figcaption b { color: var(--ink); font-weight: 600; }
+
 footer { color: var(--muted); font-size: 13px; text-align: center; }
 </style>
 
@@ -95,7 +101,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   </header>
 
   <div class="strip" aria-label="ملخص الحالة">
-    <div class="stat done"><b>7</b><span>منجز</span></div>
+    <div class="stat done"><b>8</b><span>منجز</span></div>
     <div class="stat prog"><b>1</b><span>قيد المعالجة</span></div>
     <div class="stat plan"><b>3</b><span>مجدول</span></div>
     <div class="stat issue"><b>1</b><span>ملف يحتاج معالجة</span></div>
@@ -103,7 +109,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 
   <div class="summary">
     <h2>ملخص اليوم</h2>
-    <p>تركّز العمل اليوم على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وعُقد اجتماع مع شركة كلوب لخدمة الطلبات المحلية لفرع Ogg، وتم التواصل مع عدة موردين للعبة السكويشي والبالونات. وأكدت شركة مكافحة الحشرات رش الفرع يوم الخميس 5 نوفمبر، إلى جانب تركيب مصائد القوارض حول الفرع.</p>
+    <p>تركّز العمل اليوم على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وعُقد اجتماع مع شركة كلوب لخدمة الطلبات المحلية لفرع Ogg، وتم التواصل مع عدة موردين للعبة السكويشي والبالونات. وأكدت شركة مكافحة الحشرات رش الفرع يوم الخميس 5 نوفمبر، إلى جانب تركيب مصائد القوارض حول الفرع. وتمت صيانة إنارة لوحة الفرع وعادت تشتغل.</p>
   </div>
 
   <section>
@@ -137,6 +143,18 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
       <li><span class="t">صناديق طُعم ولواصق للفئران حول الفرع</span><span class="pill done">تم الطلب</span>
         <span class="d">طلب تركيب صناديق طُعم خارج الفرع ومن حوله، فيها طُعم حلاوة ولواصق للفئران.</span></li>
     </ul>
+  </section>
+
+  <section>
+    <h2>صيانة الفرع</h2>
+    <ul class="tasks">
+      <li><span class="t">صيانة إنارة لوحة OGG الخارجية</span><span class="pill done">منجز</span>
+        <span class="d">تمت الصيانة برافعة، واللوحة مضيئة بالكامل.</span></li>
+    </ul>
+    <div class="photos">
+      <figure><img src="images/2026-11-03/sign-maintenance-during.jpg" alt="فني على رافعة يصلح إنارة لوحة OGG وهي مطفية"><figcaption><b>أثناء الصيانة</b> · اللوحة مطفية والفني على الرافعة</figcaption></figure>
+      <figure><img src="images/2026-11-03/sign-maintenance-after.jpg" alt="لوحة OGG مضيئة بعد الصيانة"><figcaption><b>بعد الصيانة</b> · اللوحة تشتغل بالكامل</figcaption></figure>
+    </div>
   </section>
 
   <section>
