@@ -118,6 +118,9 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; b
 .sub { font-family: var(--display); font-size: 15px; margin: 4px 0 0; }
 .photos.single { grid-template-columns: minmax(0, 420px); }
 .photos.single img { aspect-ratio: auto; object-fit: contain; }
+.tbl td.items { white-space: normal; min-width: 260px; text-align: start; }
+.tbl tfoot th, .tbl tfoot td { font-weight: 700; border-top: 2px solid var(--line); }
+.tag { font-size: 11.5px; font-weight: 600; color: var(--prog); background: var(--prog-bg); padding: 1px 7px; border-radius: 999px; margin-inline-start: 4px; }
 .src { font-size: 13px; color: var(--muted); margin: 0; }
 
 footer { color: var(--muted); font-size: 13px; text-align: center; }
@@ -131,7 +134,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   </header>
 
   <div class="strip" aria-label="ملخص الحالة">
-    <div class="stat done"><b>10</b><span>منجز</span></div>
+    <div class="stat done"><b>11</b><span>منجز</span></div>
     <div class="stat prog"><b>2</b><span>قيد المعالجة</span></div>
     <div class="stat plan"><b>3</b><span>مجدول</span></div>
     <div class="stat issue"><b>3</b><span>تحتاج معالجة</span></div>
@@ -139,7 +142,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 
   <div class="summary">
     <h2>ملخص الفترة</h2>
-    <p>تركّز العمل خلال الفترة على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وعُقد اجتماع مع شركة كلوب لخدمة الطلبات المحلية لفرع Ogg والتنفيذ جارٍ، وتم التواصل مع عدة موردين للعبة السكويشي والبالونات. وأكدت شركة مكافحة الحشرات رش الفرع يوم الخميس 5 نوفمبر، إلى جانب تركيب مصائد القوارض حول الفرع. وتمت صيانة إنارة لوحة الفرع ومكينة الآيس كريم. وأظهر الجرد اليومي هدراً ملحوظاً في اللحم، ونفاد أربعة أصناف من الصوصات وقاعدة الآيس كريم.</p>
+    <p>تركّز العمل خلال الفترة على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وعُقد اجتماع مع شركة كلوب لخدمة الطلبات المحلية لفرع Ogg والتنفيذ جارٍ، وتم التواصل مع عدة موردين للعبة السكويشي والبالونات. وأكدت شركة مكافحة الحشرات رش الفرع يوم الخميس 5 نوفمبر، إلى جانب تركيب مصائد القوارض حول الفرع. وتمت صيانة إنارة لوحة الفرع ومكينة الآيس كريم. واستُلمت 4 طلبيات للفرع بإجمالي 2,785.80 ر.س. وأظهر الجرد اليومي هدراً ملحوظاً في اللحم، ونفاد أربعة أصناف من الصوصات وقاعدة الآيس كريم.</p>
   </div>
 
   <section>
@@ -235,6 +238,43 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   </section>
 
   <section>
+    <h2>استلام الطلبيات <small>فرع OGG · 4 فواتير</small></h2>
+    <ul class="tasks">
+      <li><span class="t">استلام طلبيات الفرع ومطابقتها مع الفواتير</span><span class="pill done">منجز</span>
+        <span class="d">الإجمالي: <b class="num">2,785.80</b> ر.س شامل الضريبة (2,442.00 قبل الضريبة + 343.80 ضريبة).</span></li>
+    </ul>
+    <div class="tbl">
+      <table>
+        <thead><tr><th scope="col">التاريخ</th><th scope="col">المورد</th><th scope="col">رقم الفاتورة</th><th scope="col">الأصناف</th><th scope="col">قبل الضريبة</th><th scope="col">الإجمالي</th></tr></thead>
+        <tbody>
+          <tr><td>1 نوف</td><th scope="row">مؤسسة طازج طبيعي</th><td>INV62315</td><td class="items">كزبرة 15 حبة، ليمون أصفر 5 كجم، طماطم 5 كجم</td><td>74.00</td><td class="cl">85.10</td></tr>
+          <tr><td>1 نوف</td><th scope="row">شركة أمال سالم (جنة)</th><td>17698</td><td class="items">قفازات فينيل 2 كرتون، صابون صحون 30 لتر، مطهر أرضيات 30 لتر، مكانس وعصي 4 حبات، ماكسي رول 4 كراتين</td><td>426.00</td><td class="cl">467.40</td></tr>
+          <tr><td>1 نوف</td><th scope="row">شركة غورميه غايد <span class="tag">آجل</span></th><td>1887</td><td class="items">خبز فتات بانكو 4 كراتين، توابل كاجون 12 × 500 جم، توابل باربكيو 4 × 500 جم</td><td>1,760.00</td><td class="cl">2,024.00</td></tr>
+          <tr><td>3 نوف</td><th scope="row">مؤسسة طازج طبيعي</th><td>INV62428</td><td class="items">فلفل أخضر 7 كجم، فلفل أحمر 5 كجم، بصل أبيض 10 كجم، ملفوف 10 كجم</td><td>182.00</td><td class="cl">209.30</td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row" colspan="4">المجموع</th><td>2,442.00</td><td class="cl">2,785.80</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-card">
+        <h3>مطابقة مع الجرد</h3>
+        <ul>
+          <li>توابل الكاجون: 12 × 500 جم = <span class="num">6</span> كجم، نفس المسجّل في جرد 1 نوفمبر.</li>
+          <li>الباربكيو الحار: 4 × 500 جم = <span class="num">2</span> كجم، نفس المسجّل في الجرد.</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <h3>ملاحظات على الفواتير</h3>
+        <ul>
+          <li>فاتورة غورميه غايد <b>آجلة</b> بمبلغ <span class="num">2,024.00</span> ر.س، تحتاج تُسجّل للسداد.</li>
+          <li>فاتورة أمال سالم: القفازات (150 ر.س) بدون ضريبة، والباقي عليه 15%.</li>
+        </ul>
+      </div>
+    </div>
+    
+  </section>
+
+  <section>
     <h2>الوثائق والتراخيص الحكومية</h2>
     <ul class="tasks">
       <li><span class="t">طباعة السجل التجاري</span><span class="pill done">منجز</span></li>
@@ -310,6 +350,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
       <li><span class="t">رفع إجازة مرضية للموظف دانيال عبر منصة اكتفاء</span><span class="pill done">منجز</span>
         <span class="d">إجازة ليوم واحد (الثلاثاء 3 نوفمبر)، صادرة من مجمع زمزم الطبي بتاريخ 2 نوفمبر، رقم الشهادة SLC49476.</span></li>
     </ul>
+    
   </section>
 
   <section>
@@ -323,6 +364,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <section>
     <h2>متابعات قادمة <small>نقلناها من اليوم</small></h2>
     <ul class="check">
+      <li><div>تسجيل فاتورة غورميه غايد الآجلة (2,024.00 ر.س) للسداد</div></li>
       <li><div>إعادة طلب الأصناف النافدة: قاعدة آيس كريم الليمون، صوص OGG، الصوص الحساوي، صوص الشيدر</div></li>
       <li><div>مراجعة سبب الهدر المرتفع في اللحم مع فريق المطبخ</div></li>
       <li><div>تصحيح أرقام الماء والبطاطس في نماذج الجرد <span class="who">· Charo</span></div></li>
