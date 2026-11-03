@@ -48,13 +48,13 @@ header { display: grid; gap: 6px; padding-bottom: 18px; border-bottom: 2px solid
 h1 { font-family: var(--display); font-size: clamp(26px, 5vw, 34px); line-height: 1.3; margin: 0; text-wrap: balance; }
 .meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: 14px; }
 
-.strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; }
 .stat b { font-family: var(--display); font-size: 26px; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .stat span { font-size: 13px; color: var(--muted); }
 .stat.done b { color: var(--done); } .stat.prog b { color: var(--prog); }
 .stat.wait b { color: var(--wait); } .stat.plan b { color: var(--plan); } .stat.issue b { color: var(--issue); }
-@media (max-width: 640px) { .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat.issue { grid-column: 1 / -1; } }
+@media (max-width: 640px) { .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 .summary { background: var(--accent-soft); border-radius: 10px; padding: 16px 18px; }
 .summary h2 { margin-bottom: 4px; }
@@ -91,20 +91,19 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <header>
     <div class="eyebrow">التقرير اليومي · الإدارة التشغيلية</div>
     <h1>تقرير يوم الثلاثاء 3 نوفمبر 2026</h1>
-    <div class="meta"><span>المُعِدّ: مدير التشغيل</span><span>النطاق: الفرع والإدارة</span></div>
+    <div class="meta"><span>المُعِدّ: مدير التشغيل</span><span>الفرع: Ogg</span></div>
   </header>
 
   <div class="strip" aria-label="ملخص الحالة">
-    <div class="stat done"><b>5</b><span>منجز</span></div>
+    <div class="stat done"><b>7</b><span>منجز</span></div>
     <div class="stat prog"><b>1</b><span>قيد المعالجة</span></div>
-    <div class="stat wait"><b>1</b><span>بانتظار التنفيذ</span></div>
-    <div class="stat plan"><b>2</b><span>مجدول</span></div>
+    <div class="stat plan"><b>3</b><span>مجدول</span></div>
     <div class="stat issue"><b>1</b><span>ملف يحتاج معالجة</span></div>
   </div>
 
   <div class="summary">
     <h2>ملخص اليوم</h2>
-    <p>تركّز العمل اليوم على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وتم التواصل مع شركة مكافحة الحشرات لتركيب مصائد قوارض حول الفرع.</p>
+    <p>تركّز العمل اليوم على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وعُقد اجتماع مع شركة كلوب لخدمة الطلبات المحلية لفرع Ogg، وتم التواصل مع عدة موردين للعبة السكويشي والبالونات. وأكدت شركة مكافحة الحشرات رش الفرع يوم الخميس 5 نوفمبر، إلى جانب تركيب مصائد القوارض حول الفرع.</p>
   </div>
 
   <section>
@@ -133,8 +132,26 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <section>
     <h2>السلامة الصحية ومكافحة الآفات</h2>
     <ul class="tasks">
-      <li><span class="t">التواصل مع شركة مكافحة الحشرات</span><span class="pill wait">بانتظار التنفيذ</span>
+      <li><span class="t">رش الفرع من الحشرات</span><span class="pill plan">الخميس 5 نوفمبر</span>
+        <span class="d">ردّت شركة مكافحة الحشرات وأكدت موعد الرش.</span></li>
+      <li><span class="t">صناديق طُعم ولواصق للفئران حول الفرع</span><span class="pill done">تم الطلب</span>
         <span class="d">طلب تركيب صناديق طُعم خارج الفرع ومن حوله، فيها طُعم حلاوة ولواصق للفئران.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>الطلبات المحلية والتوصيل</h2>
+    <ul class="tasks">
+      <li><span class="t">اجتماع مع شركة كلوب للطلبات المحلية لفرع Ogg</span><span class="pill done">منجز</span>
+        <span class="d">الأستاذ يوسف</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>المشتريات والموردين</h2>
+    <ul class="tasks">
+      <li><span class="t">التواصل مع عدة موردين للعبة السكويشي والبالونات</span><span class="pill done">منجز</span>
+        <span class="d">جمع العروض من أكثر من مورد للمقارنة.</span></li>
     </ul>
   </section>
 
@@ -160,7 +177,9 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
       <li><div>زيارة الإدارة يوم الثلاثاء ومعالجة مشاكل الشهادات الصحية <span class="who">· مع نوف</span></div></li>
       <li><div>تحديد موعد الجولة على الفروع، وتجهيز قائمة المستندات المطلوب مراجعتها <span class="who">· مع نوف</span></div></li>
       <li><div>متابعة صدور تجديد "واثق"</div></li>
-      <li><div>التأكد من تركيب صناديق الطُّعم واللواصق حول الفرع <span class="who">· شركة مكافحة الحشرات</span></div></li>
+      <li><div>الخميس 5 نوفمبر: حضور رش الفرع، والتأكد من تركيب صناديق الطُّعم واللواصق <span class="who">· شركة مكافحة الحشرات</span></div></li>
+      <li><div>متابعة نتائج الاجتماع مع شركة كلوب وخطوات تفعيل الطلبات المحلية لفرع Ogg</div></li>
+      <li><div>مقارنة عروض موردي السكويشي والبالونات واختيار الأنسب</div></li>
     </ul>
   </section>
 
