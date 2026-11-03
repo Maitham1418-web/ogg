@@ -1,0 +1,168 @@
+<title>تقرير الثلاثاء 3 نوفمبر</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;600;700&display=swap">
+<style>
+/* Layout: single readable column, RTL; header band, status strip, then sections grouped by work area. */
+:root {
+  --bg: #f3f5f4;
+  --surface: #ffffff;
+  --ink: #1b2a30;
+  --muted: #5d6d72;
+  --line: #dde3e2;
+  --accent: #0e6b68;
+  --accent-soft: #e2f0ef;
+  --done: #2c7a4b;   --done-bg: #e3f2e8;
+  --prog: #9a6412;   --prog-bg: #fbf0dc;
+  --plan: #3b5694;   --plan-bg: #e6ecf8;
+  --wait: #6b4fa0;   --wait-bg: #efe9f8;
+  --issue: #a8372b;  --issue-bg: #fbe7e4;
+  --display: "Readex Pro", "IBM Plex Sans Arabic", Tahoma, sans-serif;
+  --body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121a1c; --surface: #1a2427; --ink: #e4ecea; --muted: #9aaaa8; --line: #2c3a3d;
+  --accent: #5cc0b9; --accent-soft: #1d3634;
+  --done: #7fcf9c; --done-bg: #1c3326; --prog: #e7b660; --prog-bg: #3a2d16;
+  --plan: #9db4ec; --plan-bg: #1f2a44; --wait: #bba4e8; --wait-bg: #2c2440;
+  --issue: #f0958a; --issue-bg: #3d211d; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #121a1c; --surface: #1a2427; --ink: #e4ecea; --muted: #9aaaa8; --line: #2c3a3d;
+  --accent: #5cc0b9; --accent-soft: #1d3634;
+  --done: #7fcf9c; --done-bg: #1c3326; --prog: #e7b660; --prog-bg: #3a2d16;
+  --plan: #9db4ec; --plan-bg: #1f2a44; --wait: #bba4e8; --wait-bg: #2c2440;
+  --issue: #f0958a; --issue-bg: #3d211d; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body {
+  direction: rtl; background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 56px;
+}
+.wrap { max-width: 860px; margin: 0 auto; display: grid; gap: 22px; }
+
+header { display: grid; gap: 6px; padding-bottom: 18px; border-bottom: 2px solid var(--accent); }
+.eyebrow { font-size: 13px; letter-spacing: .02em; color: var(--accent); font-weight: 600; }
+h1 { font-family: var(--display); font-size: clamp(26px, 5vw, 34px); line-height: 1.3; margin: 0; text-wrap: balance; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: 14px; }
+
+.strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; }
+.stat b { font-family: var(--display); font-size: 26px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); }
+.stat.done b { color: var(--done); } .stat.prog b { color: var(--prog); }
+.stat.wait b { color: var(--wait); } .stat.plan b { color: var(--plan); } .stat.issue b { color: var(--issue); }
+@media (max-width: 640px) { .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat.issue { grid-column: 1 / -1; } }
+
+.summary { background: var(--accent-soft); border-radius: 10px; padding: 16px 18px; }
+.summary h2 { margin-bottom: 4px; }
+.summary p { margin: 0; }
+
+section { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 12px; min-width: 0; }
+h2 { font-family: var(--display); font-size: 19px; margin: 0; display: flex; align-items: baseline; gap: 10px; }
+h2 small { font-family: var(--body); font-weight: 500; font-size: 13px; color: var(--muted); }
+
+.tasks { list-style: none; margin: 0; padding: 0; display: grid; }
+.tasks li { display: grid; grid-template-columns: 1fr auto; gap: 4px 14px; align-items: start; padding: 12px 0; border-top: 1px solid var(--line); }
+.tasks li:first-child { border-top: 0; padding-top: 2px; }
+.tasks .t { font-weight: 600; }
+.tasks .d { grid-column: 1 / 2; color: var(--muted); font-size: 14.5px; }
+.pill { font-size: 12.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+.pill.done { color: var(--done); background: var(--done-bg); }
+.pill.prog { color: var(--prog); background: var(--prog-bg); }
+.pill.plan { color: var(--plan); background: var(--plan-bg); }
+.pill.wait { color: var(--wait); background: var(--wait-bg); }
+
+.issue-box { border-inline-start: 4px solid var(--issue); background: var(--issue-bg); border-radius: 8px; padding: 12px 14px; }
+.issue-box .t { font-weight: 600; color: var(--issue); }
+.issue-box p { margin: 4px 0 0; }
+
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.check li { display: flex; gap: 10px; align-items: flex-start; }
+.check li::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: 6px; border: 2px solid var(--accent); border-radius: 4px; }
+.who { color: var(--muted); font-size: 13.5px; }
+
+footer { color: var(--muted); font-size: 13px; text-align: center; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">التقرير اليومي · الإدارة التشغيلية</div>
+    <h1>تقرير يوم الثلاثاء 3 نوفمبر 2026</h1>
+    <div class="meta"><span>المُعِدّ: مدير التشغيل</span><span>النطاق: الفرع والإدارة</span></div>
+  </header>
+
+  <div class="strip" aria-label="ملخص الحالة">
+    <div class="stat done"><b>5</b><span>منجز</span></div>
+    <div class="stat prog"><b>1</b><span>قيد المعالجة</span></div>
+    <div class="stat wait"><b>1</b><span>بانتظار التنفيذ</span></div>
+    <div class="stat plan"><b>2</b><span>مجدول</span></div>
+    <div class="stat issue"><b>1</b><span>ملف يحتاج معالجة</span></div>
+  </div>
+
+  <div class="summary">
+    <h2>ملخص اليوم</h2>
+    <p>تركّز العمل اليوم على تحديث الوثائق الحكومية للفرع: طُبع السجل التجاري ورخصة البلدية لخدمة التوصيل، وبدأ تجديد وثيقة "واثق". تم الاتفاق مع نوف على زيارة الإدارة بخصوص الشهادات الصحية التي فيها عدة مشاكل، وعلى جولة تشمل كل الفروع لمراجعة المستندات. وتم التواصل مع شركة مكافحة الحشرات لتركيب مصائد قوارض حول الفرع.</p>
+  </div>
+
+  <section>
+    <h2>الوثائق والتراخيص الحكومية</h2>
+    <ul class="tasks">
+      <li><span class="t">طباعة السجل التجاري</span><span class="pill done">منجز</span></li>
+      <li><span class="t">طباعة رخصة البلدية لخدمة التوصيل للمنازل</span><span class="pill done">منجز</span></li>
+      <li><span class="t">تجديد وثيقة "واثق"</span><span class="pill prog">قيد المعالجة</span>
+        <span class="d">الطلب تحت المعالجة، وننتظر صدور التجديد.</span></li>
+      <li><span class="t">جولة على جميع الفروع لتحديث المستندات</span><span class="pill plan">مجدول</span>
+        <span class="d">تم الاتفاق مع نوف على زيارة كل الفروع، وتحديث المستندات كاملة، ومراجعة جميع الوثائق الحكومية. لم تُنفّذ بعد.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>الشهادات الصحية</h2>
+    <div class="issue-box">
+      <div class="t">توجد عدة مشاكل في الشهادات الصحية</div>
+      <p>تمت مناقشتها مع نوف، وتقرر رفعها للإدارة في زيارة يوم الثلاثاء.</p>
+    </div>
+    <ul class="tasks">
+      <li><span class="t">زيارة الإدارة يوم الثلاثاء لمعالجة الشهادات الصحية</span><span class="pill plan">مجدول</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>السلامة الصحية ومكافحة الآفات</h2>
+    <ul class="tasks">
+      <li><span class="t">التواصل مع شركة مكافحة الحشرات</span><span class="pill wait">بانتظار التنفيذ</span>
+        <span class="d">طلب تركيب صناديق طُعم خارج الفرع ومن حوله، فيها طُعم حلاوة ولواصق للفئران.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>مستلزمات الفرع</h2>
+    <ul class="tasks">
+      <li><span class="t">توفير دبل فيس للفرع</span><span class="pill done">منجز</span></li>
+      <li><span class="t">توفير ورق الطباعة الحراري للفرع</span><span class="pill done">منجز</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>التنسيق والتواصل</h2>
+    <ul class="tasks">
+      <li><span class="t">التنسيق مع نوف</span><span class="pill done">منجز</span>
+        <span class="d">تم الاتفاق على زيارة الإدارة بخصوص الشهادات الصحية، وعلى جولة تشمل جميع الفروع لتحديث المستندات.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>متابعات قادمة <small>نقلناها من اليوم</small></h2>
+    <ul class="check">
+      <li><div>زيارة الإدارة يوم الثلاثاء ومعالجة مشاكل الشهادات الصحية <span class="who">· مع نوف</span></div></li>
+      <li><div>تحديد موعد الجولة على الفروع، وتجهيز قائمة المستندات المطلوب مراجعتها <span class="who">· مع نوف</span></div></li>
+      <li><div>متابعة صدور تجديد "واثق"</div></li>
+      <li><div>التأكد من تركيب صناديق الطُّعم واللواصق حول الفرع <span class="who">· شركة مكافحة الحشرات</span></div></li>
+    </ul>
+  </section>
+
+  <footer>تقرير يومي · 2026-11-03</footer>
+</div>
